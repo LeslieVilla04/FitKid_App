@@ -94,6 +94,8 @@ The core MVP is manageable within the course timeline: interactive lessons, user
 
 ## Wireframes
 
-<img src="https://github.com/your-username/your-repo-name/blob/main/assets/wireframe_home.png?raw=true" width="600">
+![Wireframe_FitKid pdf](https://github.com/user-attachments/assets/2851f56a-09d4-4727-a7a6-9767cbaf2f51)
+
+
 
 
