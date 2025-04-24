@@ -90,3 +90,10 @@ The core MVP is manageable within the course timeline: interactive lessons, user
 - Rewards Screen → Home
 - Profile Screen → Settings → Home
 
+
+
+## Wireframes
+
+[View FitKid Wireframes (PDF)](https://github.com/user-attachments/files/19885480/Wireframe_FitKid.pdf)
+
+
