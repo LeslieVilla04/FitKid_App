@@ -21,9 +21,7 @@ struct LessonsView: View {
 
                 List {
                     // Emotions 101
-                    Button(action: {
-                        // Add action for Emotions 101
-                    }) {
+                    NavigationLink(destination: EmotionsLessonView()) {
                         Text("Emotions 101")
                             .font(.title2)
                             .foregroundColor(.fitOrange)
@@ -34,33 +32,31 @@ struct LessonsView: View {
                             .shadow(radius: 4)
                     }
 
+
                     // Healthy Habits
-                    Button(action: {
-                        // Add action for Healthy Habits
-                    }) {
-                        Text("Healthy Habits")
-                            .font(.title2)
-                            .foregroundColor(.fitOrange)
-                            .padding()
-                            .frame(maxWidth: .infinity)
-                            .background(Color.fitWhite)
-                            .cornerRadius(12)
-                            .shadow(radius: 4)
-                    }
+                    NavigationLink(destination: HealthyHabitsLessonView()) {
+                           Text("Healthy Habits")
+                               .font(.title2)
+                               .foregroundColor(.fitOrange)
+                               .padding()
+                               .frame(maxWidth: .infinity)
+                               .background(Color.fitWhite)
+                               .cornerRadius(12)
+                               .shadow(radius: 4)
+                       }
+
 
                     // Puberty Basics
-                    Button(action: {
-                        // Add action for Puberty Basics
-                    }) {
-                        Text("Puberty Basics")
-                            .font(.title2)
-                            .foregroundColor(.fitOrange)
-                            .padding()
-                            .frame(maxWidth: .infinity)
-                            .background(Color.fitWhite)
-                            .cornerRadius(12)
-                            .shadow(radius: 4)
-                    }
+                    NavigationLink(destination: PubertyBasicsLessonView()) {
+                            Text("Puberty Basics")
+                                .font(.title2)
+                                .foregroundColor(.fitOrange)
+                                .padding()
+                                .frame(maxWidth: .infinity)
+                                .background(Color.fitWhite)
+                                .cornerRadius(12)
+                                .shadow(radius: 4)
+                        }
                 }
                 .listStyle(InsetGroupedListStyle()) // Adds nicer spacing and styling to the list
                 .background(Color.fitMint) // Apply background color to the list

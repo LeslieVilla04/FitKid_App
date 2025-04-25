@@ -10,26 +10,53 @@ import SwiftUI
 struct MainTabView: View {
     var body: some View {
         TabView {
-            HomeView()
-                .tabItem {
-                    Label("Home", systemImage: "house")
-                }
-            LessonsView()
-                .tabItem {
-                    Label("Lessons", systemImage: "book")
-                }
-            HabitTrackerView()
-                .tabItem {
-                    Label("Habits", systemImage: "checkmark.circle")
-                }
-            RewardsView()
-                .tabItem {
-                    Label("Rewards", systemImage: "star")
-                }
-            ProfileView()
-                .tabItem {
-                    Label("Profile", systemImage: "person")
-                }
+            // 🏠 Home Tab
+            NavigationView {
+                HomeView()
+            }
+            .tabItem {
+                Label("Home", systemImage: "house")
+            }
+
+            // 📚 Lessons Tab
+            NavigationView {
+                LessonsView()
+            }
+            .tabItem {
+                Label("Lessons", systemImage: "book")
+            }
+
+            // ✅ Habits Tab
+            NavigationView {
+                HabitTrackerView()
+            }
+            .tabItem {
+                Label("Habits", systemImage: "checkmark.circle")
+            }
+
+            // ❓ Quiz Tab (needs NavigationView for NavigationLink)
+            NavigationView {
+                QuizView()
+            }
+            .tabItem {
+                Label("Quiz", systemImage: "questionmark.circle")
+            }
+
+            // 🌟 Rewards Tab
+            NavigationView {
+                RewardsView()
+            }
+            .tabItem {
+                Label("Rewards", systemImage: "star")
+            }
+
+            // 👤 Profile Tab
+            NavigationView {
+                ProfileView()
+            }
+            .tabItem {
+                Label("Profile", systemImage: "person")
+            }
         }
     }
 }

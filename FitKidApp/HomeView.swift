@@ -8,58 +8,72 @@
 import SwiftUI
 
 struct HomeView: View {
+    // Retrieve the stored username
+    @AppStorage("username") private var storedUsername: String?
+    @AppStorage("selectedAvatar") private var selectedAvatar = "🐱"
+    
+    // Retrieve quiz and habit progress
+    @AppStorage("quizProgress") private var quizProgress: String = "Not Started"
+    @AppStorage("habitCompletion") private var habitCompletionData: Data?
+    
     var body: some View {
-        ZStack {
-            Color.fitMint.ignoresSafeArea() // background
+        NavigationView {
+            ZStack {
+                Color.fitMint.ignoresSafeArea()
 
-            VStack(spacing: 30) {
-                Text("Welcome back, Kiddo!")
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
-                    .foregroundColor(.fitOrange)
-                
-                Image(systemName: "person.circle")
-                    .resizable()
-                    .frame(width: 100, height: 100)
-                    .foregroundColor(.fitOrange) // icon color
+                VStack(spacing: 30) {
+                    // Display the user's name if available, otherwise a default message
+                    Text("Welcome back, \(storedUsername ?? "Kiddo")!")
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
+                        .foregroundColor(.fitOrange)
 
-                Text("Your Progress: ⭐️⭐️")
-                    .font(.title2)
-                    .foregroundColor(.fitOrange)
+                    Text(selectedAvatar)
+                        .font(.system(size: 100))
 
-                Button(action: {
-                    // Add navigation action here
-                }) {
-                    HStack {
-                        Image(systemName: "book.fill") // Icon for lessons
-                            .foregroundColor(.fitOrange) // icon color
-                        Text("Start a Lesson")
-                            .foregroundColor(.fitOrange) // text color
+                    // Display quiz progress
+                    Text("Quiz Progress: \(quizProgress == "Completed" ? "✅ Completed!" : quizProgress == "In Progress" ? "🔄 In Progress" : "🕒 Not Started")")
+                        .font(.title2)
+                        .foregroundColor(.fitOrange)
+                    
+                    // Display habit progress
+                    let habitsCompleted = habitCompletionData != nil && !habitCompletionData!.isEmpty
+                    Text("Habits Progress: \(habitsCompleted ? "✅ Completed!" : "🕒 Incomplete")")
+                        .font(.title2)
+                        .foregroundColor(.fitOrange)
+
+                    // Start a Lesson
+                    NavigationLink(destination: LessonsView()) {
+                        HStack {
+                            Image(systemName: "book.fill")
+                                .foregroundColor(.fitOrange)
+                            Text("Start a Lesson")
+                                .foregroundColor(.fitOrange)
+                        }
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(Color.fitWhite)
+                        .cornerRadius(12)
+                        .shadow(radius: 4)
                     }
-                    .padding()
-                    .frame(maxWidth: .infinity)
-                    .background(Color.fitWhite)
-                    .cornerRadius(12)
-                    .shadow(radius: 4)
-                }
 
-                Button(action: {
-                    // Add navigation action here
-                }) {
-                    HStack {
-                        Image(systemName: "checkmark.circle.fill") // Icon for habits
-                            .foregroundColor(.fitOrange) // icon color
-                        Text("Check Habits")
-                            .foregroundColor(.fitOrange) // text color
+                    // Check Habits
+                    NavigationLink(destination: HabitTrackerView()) {
+                        HStack {
+                            Image(systemName: "checkmark.circle.fill")
+                                .foregroundColor(.fitOrange)
+                            Text("Check Habits")
+                                .foregroundColor(.fitOrange)
+                        }
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(Color.fitWhite)
+                        .cornerRadius(12)
+                        .shadow(radius: 4)
                     }
-                    .padding()
-                    .frame(maxWidth: .infinity)
-                    .background(Color.fitWhite)
-                    .cornerRadius(12)
-                    .shadow(radius: 4)
                 }
+                .padding()
             }
-            .padding()
         }
     }
 }

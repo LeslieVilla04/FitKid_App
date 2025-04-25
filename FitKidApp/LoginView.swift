@@ -8,7 +8,11 @@
 import SwiftUI
 
 struct LoginView: View {
-    @State private var isLoggedIn = false
+    @AppStorage("isLoggedIn") private var isLoggedIn = false
+    @State private var username = "" // Add a variable to store the user's name
+
+    // Use @AppStorage to store the name and persist it across app sessions
+    @AppStorage("username") private var storedUsername: String?
 
     var body: some View {
         if isLoggedIn {
@@ -24,7 +28,14 @@ struct LoginView: View {
                         .foregroundColor(.fitOrange)
                         .multilineTextAlignment(.center)
 
+                    TextField("Enter your name", text: $username)
+                        .padding()
+                        .background(Color.fitWhite)
+                        .cornerRadius(12)
+                        .shadow(radius: 4)
+
                     Button(action: {
+                        storedUsername = username // Save the name when logging in
                         isLoggedIn = true
                     }) {
                         Text("Log In")
